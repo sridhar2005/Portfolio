@@ -1,0 +1,381 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --brand-red: #ef233c;
+    --brand-crimson: #d90429;
+    --brand-dark: #000000;
+    --brand-surface: #08080b;
+    --brand-card: #101116;
+    --brand-border: #1f2027;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #000000;
+    color: #e2e4e9;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #ef233c;
+    color: #ffffff;
+  }
+}
+
+/* Ambient Pulsing Glow */
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.28;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.55;
+  }
+}
+
+.ambient-glow {
+  animation: pulseGlow 6s ease-in-out infinite;
+}
+
+/* Shimmer Text Effect */
+@keyframes textShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.text-shimmer {
+  background: linear-gradient(90deg, #ffffff 0%, #ff8a93 40%, #ef233c 50%, #ffffff 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: textShimmer 7s ease-in-out infinite;
+}
+
+/* Floating particles */
+@keyframes floatParticle {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(-14px) translateX(8px);
+  }
+}
+
+.float-slow {
+  animation: floatParticle 8s ease-in-out infinite;
+}
+
+.float-delayed {
+  animation: floatParticle 10s ease-in-out 3s infinite;
+}
+
+/* Glass card styles with smooth elevation and luminous glow */
+.card-glass {
+  background: linear-gradient(180deg, rgba(16, 17, 22, 0.88) 0%, rgba(8, 8, 11, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-glass:hover {
+  border-color: rgba(239, 35, 60, 0.5);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.8), 0 0 25px rgba(239, 35, 60, 0.25);
+}
+
+/* Interactive 3D flip card dynamics */
+.card-flip-container {
+  perspective: 1100px;
+}
+
+.card-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.card-flip-container:hover .card-flip-inner,
+.card-flip-container:focus-within .card-flip-inner,
+.card-flip-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card-flip-front,
+.card-flip-back {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 0.75rem;
+}
+
+.card-flip-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+}
+
+/* Button Shimmer Sweep & Ripple Pulse Effect */
+.btn-sweep {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.2s;
+}
+
+.btn-sweep::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(60deg, rgba(255, 255, 255, 0) 10%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 90%);
+  transform: rotate(25deg);
+  transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.btn-sweep:hover::after {
+  left: 140%;
+}
+
+.btn-sweep:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 24px rgba(239, 35, 60, 0.45);
+}
+
+.btn-sweep:active {
+  transform: scale(0.97);
+}
+
+/* Social Button Rotational Hover Dynamics */
+.social-btn {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.social-btn:hover {
+  transform: translateY(-4px) rotate(6deg) scale(1.08);
+  border-color: rgba(239, 35, 60, 0.6);
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(239, 35, 60, 0.35);
+}
+
+/* Cyber grid pattern */
+.cyber-grid {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+/* ECG Animated SVG Pulse Line */
+@keyframes ecgStroke {
+  0% {
+    stroke-dashoffset: 600;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.ecg-line {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 0;
+  animation: ecgStroke 3s linear infinite;
+}
+
+/* Interactive Mouse Follow Glow */
+#cursor-glow {
+  pointer-events: none;
+  position: fixed;
+  width: 460px;
+  height: 460px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(239, 35, 60, 0.08) 0%, rgba(239, 35, 60, 0) 65%);
+  transform: translate(-50%, -50%);
+  z-index: 30;
+  transition: opacity 0.4s ease;
+  opacity: 0;
+  will-change: transform, left, top;
+}
+
+/* ==========================================================================
+   Motion System: Keyframes, Page-Load Animations, and Viewport Scroll Reveals
+   ========================================================================== */
+
+/* Hero Page-Load Keyframes */
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroFadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroScaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes heroPulseAura {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.25;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 0.45;
+  }
+}
+
+.anim-hero-up {
+  opacity: 0;
+  animation: heroFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.anim-hero-down {
+  opacity: 0;
+  animation: heroFadeDown 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.anim-hero-scale {
+  opacity: 0;
+  animation: heroScaleIn 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.anim-hero-aura {
+  animation: heroPulseAura 7s ease-in-out infinite;
+}
+
+/* Stagger Delays for Page Load */
+.anim-delay-100 { animation-delay: 100ms; }
+.anim-delay-150 { animation-delay: 150ms; }
+.anim-delay-200 { animation-delay: 200ms; }
+.anim-delay-250 { animation-delay: 250ms; }
+.anim-delay-300 { animation-delay: 300ms; }
+.anim-delay-350 { animation-delay: 350ms; }
+.anim-delay-400 { animation-delay: 400ms; }
+.anim-delay-500 { animation-delay: 500ms; }
+.anim-delay-600 { animation-delay: 600ms; }
+.anim-delay-700 { animation-delay: 700ms; }
+
+/* Scroll Reveal Viewport Transitions */
+.reveal-init {
+  opacity: 0;
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-up {
+  transform: translateY(28px);
+}
+
+.reveal-down {
+  transform: translateY(-24px);
+}
+
+.reveal-left {
+  transform: translateX(32px);
+}
+
+.reveal-right {
+  transform: translateX(-32px);
+}
+
+.reveal-zoom {
+  transform: scale(0.94);
+}
+
+.reveal-visible {
+  opacity: 1 !important;
+  transform: translate(0, 0) scale(1) !important;
+}
+
+/* Modal Smooth Animations */
+@keyframes modalBackdropFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalDialogSpring {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-backdrop-anim {
+  animation: modalBackdropFade 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.modal-dialog-anim {
+  animation: modalDialogSpring 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Accessible Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.001s !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.001s !important;
+    transition-delay: 0s !important;
+  }
+  .ecg-line {
+    animation: none !important;
+  }
+  #cursor-glow {
+    display: none !important;
+  }
+  .reveal-init {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .anim-hero-up,
+  .anim-hero-down,
+  .anim-hero-scale {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
