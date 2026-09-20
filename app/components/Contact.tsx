@@ -49,7 +49,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="py-24 border-t border-white/5 relative bg-black" id="contact">
+    <section className="py-24 border-t border-[var(--border-faint)] relative bg-[var(--bg-primary)]" id="contact">
       <div className="max-w-6xl mx-auto px-6">
         <ScrollReveal variant="fade-up" className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 mb-3">
@@ -57,19 +57,19 @@ export default function Contact() {
               Initiate Collaboration
             </span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white">
+          <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[var(--text-primary)]">
             LET&apos;S BUILD <br />
             <span className="text-[#ef233c]">SOMETHING GREAT</span>
           </h2>
-          <p className="text-sm text-gray-400 mt-3">Have an opportunity? Let&apos;s talk.</p>
+          <p className="text-sm text-[var(--text-muted)] mt-3">Have an opportunity? Let&apos;s talk.</p>
         </ScrollReveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Contact Details */}
           <ScrollReveal variant="fade-right" delay={100} className="lg:col-span-5 space-y-6">
-            <h3 className="text-xl font-bold text-white mb-6">Contact</h3>
+            <h3 className="text-xl font-bold text-[var(--text-primary)] mb-6">Contact</h3>
 
-            <div className="flex items-start gap-4 p-4 rounded-xl bg-zinc-900/60 border border-white/5 hover:border-red-500/40 hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(239,35,60,0.15)] transition-all duration-300">
+            <div className="flex items-start gap-4 p-4 rounded-xl liquid-glass-subtle group">
               <div className="w-10 h-10 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center text-[#ef233c] shrink-0 transition-transform duration-300 group-hover:scale-110">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -81,9 +81,9 @@ export default function Contact() {
                 </svg>
               </div>
               <div>
-                <span className="text-xs text-gray-400 block">Direct Email</span>
+                <span className="text-xs text-[var(--text-muted)] block">Direct Email</span>
                 <a
-                  className="text-sm font-semibold text-white hover:text-[#ef233c] transition-colors"
+                  className="text-sm font-semibold text-[var(--text-primary)] hover:text-[#ef233c] transition-colors"
                   href="mailto:kavisridharsk2005@gmail.com"
                 >
                   kavisridharsk2005@gmail.com
@@ -91,7 +91,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-4 rounded-xl bg-zinc-900/60 border border-white/5 hover:border-red-500/40 hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(239,35,60,0.15)] transition-all duration-300">
+            <div className="flex items-start gap-4 p-4 rounded-xl liquid-glass-subtle group">
               <div className="w-10 h-10 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center text-[#ef233c] shrink-0 transition-transform duration-300 group-hover:scale-110">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -103,9 +103,9 @@ export default function Contact() {
                 </svg>
               </div>
               <div>
-                <span className="text-xs text-gray-400 block">Phone / WhatsApp</span>
+                <span className="text-xs text-[var(--text-muted)] block">Phone / WhatsApp</span>
                 <a
-                  className="text-sm font-semibold text-white hover:text-[#ef233c] transition-colors"
+                  className="text-sm font-semibold text-[var(--text-primary)] hover:text-[#ef233c] transition-colors"
                   href="https://wa.me/919360071341"
                   rel="noreferrer"
                   target="_blank"
@@ -115,7 +115,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-4 rounded-xl bg-zinc-900/60 border border-white/5 hover:border-red-500/40 hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(239,35,60,0.15)] transition-all duration-300">
+            <div className="flex items-start gap-4 p-4 rounded-xl liquid-glass-subtle group">
               <div className="w-10 h-10 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center text-[#ef233c] shrink-0 transition-transform duration-300 group-hover:scale-110">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -133,16 +133,16 @@ export default function Contact() {
                 </svg>
               </div>
               <div>
-                <span className="text-xs text-gray-400 block">Location</span>
-                <span className="text-sm font-semibold text-white">Anthiyur, Erode, Tamil Nadu</span>
+                <span className="text-xs text-[var(--text-muted)] block">Location</span>
+                <span className="text-sm font-semibold text-[var(--text-primary)]">Anthiyur, Erode, Tamil Nadu</span>
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-zinc-900/40 border border-white/5 text-xs text-gray-400 leading-relaxed">
-              <p className="font-medium text-gray-300">
+            <div className="p-4 rounded-xl liquid-glass-subtle text-xs text-[var(--text-muted)] leading-relaxed">
+              <p className="font-medium text-[var(--text-secondary)]">
                 Available for freelance projects and full-time opportunities
               </p>
-              <p className="text-gray-500 mt-1">Response time: Usually within 24 hours</p>
+              <p className="text-[var(--text-faint)] mt-1">Response time: Usually within 24 hours</p>
             </div>
           </ScrollReveal>
 
@@ -155,7 +155,7 @@ export default function Contact() {
 
                 <div>
                   <label
-                    className="block text-xs font-semibold uppercase text-gray-200 tracking-wider mb-2"
+                    className="block text-xs font-semibold uppercase text-[var(--text-secondary)] tracking-wider mb-2"
                     htmlFor="contact-name"
                   >
                     Name
@@ -168,13 +168,13 @@ export default function Contact() {
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="Your name"
                     disabled={status === "sending"}
-                    className="w-full px-4 py-3 rounded-lg bg-zinc-900/90 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:border-[#ef233c] focus:ring-1 focus:ring-[#ef233c] text-sm transition-all duration-300 disabled:opacity-60"
+                    className="w-full px-4 py-3 rounded-lg liquid-glass-input text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none text-base sm:text-sm disabled:opacity-60"
                   />
                 </div>
 
                 <div>
                   <label
-                    className="block text-xs font-semibold uppercase text-gray-200 tracking-wider mb-2"
+                    className="block text-xs font-semibold uppercase text-[var(--text-secondary)] tracking-wider mb-2"
                     htmlFor="contact-email"
                   >
                     Email
@@ -187,13 +187,13 @@ export default function Contact() {
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="your.email@example.com"
                     disabled={status === "sending"}
-                    className="w-full px-4 py-3 rounded-lg bg-zinc-900/90 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:border-[#ef233c] focus:ring-1 focus:ring-[#ef233c] text-sm transition-all duration-300 disabled:opacity-60"
+                    className="w-full px-4 py-3 rounded-lg liquid-glass-input text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none text-base sm:text-sm disabled:opacity-60"
                   />
                 </div>
 
                 <div>
                   <label
-                    className="block text-xs font-semibold uppercase text-gray-200 tracking-wider mb-2"
+                    className="block text-xs font-semibold uppercase text-[var(--text-secondary)] tracking-wider mb-2"
                     htmlFor="contact-message"
                   >
                     Message
@@ -206,7 +206,7 @@ export default function Contact() {
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Describe your biomedical inquiry or project idea..."
                     disabled={status === "sending"}
-                    className="w-full px-4 py-3 rounded-lg bg-zinc-900/90 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:border-[#ef233c] focus:ring-1 focus:ring-[#ef233c] text-sm resize-none transition-all duration-300 disabled:opacity-60"
+                    className="w-full px-4 py-3 rounded-lg liquid-glass-input text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none text-base sm:text-sm resize-none disabled:opacity-60"
                   />
                 </div>
 

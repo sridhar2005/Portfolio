@@ -37,7 +37,7 @@ export default function HonorsAwards() {
   ];
 
   return (
-    <section className="py-24 border-t border-white/5 bg-[#050508] relative" id="awards">
+    <section className="py-24 border-t border-[var(--border-faint)] bg-[var(--bg-surface)] relative" id="awards">
       <div className="max-w-6xl mx-auto px-6">
         <ScrollReveal variant="fade-up" className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 mb-3">
@@ -45,10 +45,10 @@ export default function HonorsAwards() {
               Scholarly &amp; Prototype Distinctions
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white uppercase">
+          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[var(--text-primary)] uppercase">
             Honors &amp; <span className="text-[#ef233c]">Awards</span>
           </h2>
-          <p className="text-sm sm:text-base text-gray-400 mt-2 max-w-xl mx-auto">
+          <p className="text-sm sm:text-base text-[var(--text-muted)] mt-2 max-w-xl mx-auto">
             Work that speaks. Achievements that follow
           </p>
         </ScrollReveal>
@@ -61,7 +61,7 @@ export default function HonorsAwards() {
               delay={idx * 90}
               className="h-full"
             >
-              <div className="card-glass rounded-2xl p-7 relative border border-white/10 group hover:-translate-y-2 hover:border-[#ef233c]/40 hover:shadow-[0_16px_36px_rgba(239,35,60,0.2)] transition-all duration-300 h-full flex flex-col justify-between">
+              <div className="card-glass rounded-2xl p-7 relative border border-[var(--border-subtle)] group hover:-translate-y-2 hover:border-[#ef233c]/40 hover:shadow-[0_16px_36px_rgba(239,35,60,0.2)] transition-all duration-300 h-full flex flex-col justify-between">
                 <div>
                   <div
                     className={`w-12 h-12 rounded-xl border flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300 ${award.iconColor}`}
@@ -74,12 +74,12 @@ export default function HonorsAwards() {
                     {award.badge}
                   </div>
                   <h3
-                    className={`text-lg font-bold text-white mb-2 leading-tight transition-colors ${award.hoverTitle}`}
+                    className={`text-lg font-bold text-[var(--text-primary)] mb-2 leading-tight transition-colors ${award.hoverTitle}`}
                   >
                     {award.title}
                   </h3>
                 </div>
-                <p className="text-xs text-gray-400 leading-relaxed font-light mt-2">{award.description}</p>
+                <p className="text-xs text-[var(--text-muted)] leading-relaxed font-light mt-2">{award.description}</p>
               </div>
             </ScrollReveal>
           ))}

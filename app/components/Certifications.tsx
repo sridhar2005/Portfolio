@@ -49,7 +49,7 @@ export default function Certifications() {
   ];
 
   return (
-    <section className="py-24 border-t border-white/5 relative bg-black" id="certifications">
+    <section className="py-24 border-t border-[var(--border-faint)] relative bg-[var(--bg-primary)]" id="certifications">
       <div className="max-w-6xl mx-auto px-6">
         <ScrollReveal variant="fade-up" className="text-left mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 mb-3">
@@ -57,10 +57,10 @@ export default function Certifications() {
               Continuous Learning
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white uppercase">
+          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[var(--text-primary)] uppercase">
             <span className="text-[#ef233c]">Certifications</span>
           </h2>
-          <p className="text-sm text-gray-400 mt-2">
+          <p className="text-sm text-[var(--text-muted)] mt-2">
             Credentials validated across Google Cloud, Microsoft, IBM, IIT / NPTEL, and Tamil Nadu state bodies.
           </p>
         </ScrollReveal>
@@ -73,10 +73,10 @@ export default function Certifications() {
               delay={idx * 70}
               className="h-full"
             >
-              <div className="card-glass rounded-xl p-6 border border-white/10 hover:border-[#ef233c]/50 hover:-translate-y-1.5 hover:shadow-[0_12px_30px_rgba(239,35,60,0.18)] group transition-all duration-300 h-full flex flex-col justify-between">
+              <div className="card-glass rounded-xl p-6 border border-[var(--border-subtle)] hover:border-[#ef233c]/50 hover:-translate-y-1.5 hover:shadow-[0_12px_30px_rgba(239,35,60,0.18)] group transition-all duration-300 h-full flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-[11px] font-mono font-semibold text-gray-400 uppercase">
+                    <span className="text-[11px] font-mono font-semibold text-[var(--text-muted)] uppercase">
                       {cert.issuer}
                     </span>
                     <span
@@ -90,11 +90,11 @@ export default function Certifications() {
                       {cert.date}
                     </span>
                   </div>
-                  <h3 className="text-base font-bold text-white mb-2 leading-snug group-hover:text-[#ef233c] transition-colors">
+                  <h3 className="text-base font-bold text-[var(--text-primary)] mb-2 leading-snug group-hover:text-[#ef233c] transition-colors">
                     {cert.title}
                   </h3>
                 </div>
-                <p className="text-xs text-gray-400 font-light leading-relaxed mt-2">{cert.desc}</p>
+                <p className="text-xs text-[var(--text-muted)] font-light leading-relaxed mt-2">{cert.desc}</p>
               </div>
             </ScrollReveal>
           ))}

@@ -19,7 +19,7 @@ export default function Home() {
   const [modalType, setModalType] = useState<ModalType>(null);
 
   return (
-    <div className="relative min-h-screen bg-black text-gray-200">
+    <div className="relative min-h-screen bg-[var(--bg-primary)] text-[var(--text-secondary)]">
       {/* Dynamic Cursor Light Follower */}
       <CursorGlow />
 

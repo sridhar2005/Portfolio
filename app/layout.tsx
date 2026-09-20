@@ -15,12 +15,12 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sridhar K | Biomedical Engineer & Medical IoT Developer",
+  title: "Sridhar SK | Biomedical Engineer & Medical IoT Developer",
   description:
-    "Portfolio of Sridhar K, Biomedical Engineer passionate about healthcare robotics, IoT telemetry, clinical systems engineering, and rapid medical prototyping.",
+    "Portfolio of Sridhar SK, Biomedical Engineer passionate about healthcare robotics, IoT telemetry, clinical systems engineering, and rapid medical prototyping.",
   keywords: [
     "Biomedical Engineer",
-    "Sridhar K",
+    "Sridhar SK",
     "Medical IoT",
     "Clinical Engineering",
     "Healthcare Robotics",
@@ -29,9 +29,9 @@ export const metadata: Metadata = {
     "Autodesk Fusion 360",
     "Tamil Nadu"
   ],
-  authors: [{ name: "Sridhar K" }],
+  authors: [{ name: "Sridhar SK" }],
   openGraph: {
-    title: "Sridhar K | Biomedical Engineer Portfolio",
+    title: "Sridhar SK | Biomedical Engineer Portfolio",
     description: "Bridging the gap between IoT and medical to build the next generation of healthcare solutions.",
     type: "website",
   },
@@ -43,8 +43,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${plusJakartaSans.variable} ${jetbrainsMono.variable} scroll-smooth dark`}>
+    <html lang="en" className={`${plusJakartaSans.variable} ${jetbrainsMono.variable} scroll-smooth dark`} suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{document.documentElement.setAttribute('data-theme','dark');document.documentElement.classList.add('dark');}catch(e){}`,
+          }}
+        />
+        <meta name="theme-color" content="#000000" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
@@ -52,7 +58,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-black text-gray-200 antialiased selection:bg-[#ef233c] selection:text-white relative min-h-screen">
+      <body className="bg-[var(--bg-primary)] text-[var(--text-secondary)] antialiased selection:bg-[#ef233c] selection:text-white relative min-h-screen">
         {children}
       </body>
     </html>

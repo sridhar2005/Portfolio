@@ -130,7 +130,7 @@ export default function SkillsMatrix() {
   };
 
   return (
-    <section className="py-24 border-t border-white/5 relative bg-black" id="skills">
+    <section className="py-24 border-t border-[var(--border-faint)] relative bg-[var(--bg-primary)]" id="skills">
       <div className="max-w-6xl mx-auto px-6">
         <ScrollReveal variant="fade-up" className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 mb-3">
@@ -138,10 +138,10 @@ export default function SkillsMatrix() {
               Technical Arsenal
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white uppercase">
+          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[var(--text-primary)] uppercase">
             Capabilities &amp; <span className="text-[#ef233c]">Core Matrix</span>
           </h2>
-          <p className="text-sm sm:text-base text-gray-400 mt-2 max-w-xl mx-auto">
+          <p className="text-sm sm:text-base text-[var(--text-muted)] mt-2 max-w-xl mx-auto">
             Learning. Building. Innovating
           </p>
         </ScrollReveal>
@@ -155,49 +155,52 @@ export default function SkillsMatrix() {
                 key={card.id}
                 variant="fade-up"
                 delay={idx * 65}
-                className="h-[220px]"
+                className="h-[240px] sm:h-[220px]"
               >
                 <div
                   aria-label={`${card.title} Card`}
                   role="button"
                   tabIndex={0}
                   onClick={() => toggleFlip(card.id)}
+                  onMouseLeave={() =>
+                    setFlippedCards((prev) => (prev[card.id] ? { ...prev, [card.id]: false } : prev))
+                  }
                   onKeyDown={(e) => {
                     if (e.key === "Enter" || e.key === " ") {
                       e.preventDefault();
                       toggleFlip(card.id);
                     }
                   }}
-                  className="card-flip-container h-full cursor-pointer focus:outline-none focus:ring-1 focus:ring-red-500 rounded-xl transition-transform duration-300 hover:scale-[1.02]"
+                  className="card-flip-container h-full cursor-pointer select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded-xl active:scale-[0.98] transition-transform duration-200"
                 >
                   <div className={`card-flip-inner ${isFlipped ? "is-flipped" : ""}`}>
                     {/* Front */}
-                    <div className="card-flip-front card-glass rounded-xl p-6 flex flex-col justify-between border border-white/10 hover:border-red-500/40 hover:shadow-[0_8px_25px_rgba(239,35,60,0.18)] transition-all duration-300">
+                    <div className="card-flip-front card-glass rounded-xl p-6 flex flex-col justify-between border border-[var(--border-subtle)] hover:border-red-500/40 hover:shadow-[0_8px_25px_rgba(239,35,60,0.18)] transition-all duration-300">
                       <div>
                         <div className="flex items-center justify-between mb-3">
                           <div className="w-10 h-10 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 group-hover:scale-110 transition-transform">
                             <span className="material-symbols-outlined text-[22px]">{card.icon}</span>
                           </div>
                         </div>
-                        <h3 className="text-base font-bold text-white mb-1.5">{card.title}</h3>
-                        <p className="text-xs text-gray-300 font-normal line-clamp-2 leading-relaxed">
+                        <h3 className="text-base font-bold text-[var(--text-primary)] mb-1.5">{card.title}</h3>
+                        <p className="text-xs text-[var(--text-secondary)] font-normal line-clamp-2 leading-relaxed">
                           {card.summary}
                         </p>
                       </div>
                       <div>
-                        <span className="text-[10px] text-gray-400 mt-2 block text-right font-medium">
-                          Tap / hover to flip ↻
+                        <span className="text-[10px] text-[var(--text-muted)] mt-2 block text-right font-medium">
+                          Hover to flip ↻
                         </span>
                       </div>
                     </div>
 
                     {/* Back */}
-                    <div className="card-flip-back card-glass rounded-xl p-5 flex flex-col justify-between border border-red-500/40 bg-zinc-950 shadow-[0_0_25px_rgba(239,35,60,0.25)]">
+                    <div className="card-flip-back card-glass rounded-xl p-5 flex flex-col justify-between border border-red-500/40 bg-[var(--bg-card-alt)] shadow-[0_0_25px_rgba(239,35,60,0.25)]">
                       <div>
                         <span className="text-[11px] font-mono font-bold text-red-300 uppercase tracking-wider">
                           {card.backTitle}
                         </span>
-                        <ul className="text-xs text-gray-200 space-y-1.5 mt-2.5 font-normal">
+                        <ul className="text-xs text-[var(--text-secondary)] space-y-1.5 mt-2.5 font-normal">
                           {card.points.map((point) => (
                             <li key={point} className="flex items-center gap-1.5">
                               <span className="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0" />

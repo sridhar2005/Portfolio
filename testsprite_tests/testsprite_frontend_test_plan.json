@@ -1,0 +1,568 @@
+[
+  {
+    "id": "TC001",
+    "title": "Submit the contact form successfully",
+    "description": "This verifies that a visitor can send a valid inquiry through the contact form and receive a successful submission status.",
+    "category": "Contact Form Submission",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the contact section"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the name field with a valid name"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with a valid email address"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the message field with a valid message"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a successful submission status is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the contact form reflects that the message was sent"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "Jump between portfolio sections from the header",
+    "description": "This test verifies that a visitor can use the header navigation to move from About to Experience to Contact and reach the expected sections.",
+    "category": "Navigation and Scroll Spy",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the section link for About"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the About section is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Click the section link for Experience"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Experience section is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Click the section link for Contact"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Contact section is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "Use the contact shortcut to jump to the contact section",
+    "description": "This test verifies that the Get In Touch action scrolls the visitor directly to the contact section.",
+    "category": "Navigation and Scroll Spy",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the Get In Touch action"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Contact section is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "See the active section indicator and progress bar update while scrolling",
+    "description": "This test verifies that scrolling through the page updates the active navigation state and the top progress indicator as the visitor moves between sections.",
+    "category": "Navigation and Scroll Spy",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll the page to the About section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the active navigation highlight reflects the current section"
+      },
+      {
+        "type": "action",
+        "description": "Scroll the page to the Experience section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the top progress bar advances"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "Use hero actions to reach contact and clinical experience",
+    "description": "This test verifies that the hero actions send the visitor to the contact section and the clinical experience section as intended.",
+    "category": "Hero Section and Credentials Modal",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Select the Hire Me action"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Contact section is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Select the Explore action"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the clinical experience section is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "Show validation when a required contact field is missing",
+    "description": "This verifies that the contact form prevents submission when a required field is left empty and shows validation feedback.",
+    "category": "Contact Form Submission",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the contact section"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the name field with a valid name"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with a valid email address"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a validation message is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the form is not submitted"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC007",
+    "title": "Open and dismiss the credentials modal",
+    "description": "This test verifies that a visitor can open the academic credentials modal, review the details, and close it to continue browsing.",
+    "category": "Hero Section and Credentials Modal",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Open the credentials modal"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the academic credentials modal is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Close the credentials modal"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the academic credentials modal is not visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC008",
+    "title": "Show validation for an invalid email address",
+    "description": "This verifies that the contact form rejects an invalid email format and displays validation feedback before submission.",
+    "category": "Contact Form Submission",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the contact section"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the name field with a valid name"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with an invalid email address"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the message field with a valid message"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an email validation message is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the message is not submitted"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC009",
+    "title": "Review and close the Care24 rotation breakdown",
+    "description": "This test verifies that the Care24 Medical Centre breakdown modal opens with rotation details and can be closed.",
+    "category": "Clinical Rotations and Modal Breakdowns",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Open the detailed breakdown for Care24 Medical Centre"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the clinical rotation modal is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Close the clinical rotation modal"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the clinical rotation modal is not visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC010",
+    "title": "Browse skill categories and compare capabilities",
+    "description": "This verifies that a visitor can review the skills matrix, move between skill groups, and inspect the capabilities shown for each category.",
+    "category": "Skills Matrix and Capabilities",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the skills section"
+      },
+      {
+        "type": "action",
+        "description": "Hover over a skill badge in the biomedical category"
+      },
+      {
+        "type": "action",
+        "description": "Hover over a skill badge in the IoT category"
+      },
+      {
+        "type": "action",
+        "description": "Hover over a skill badge in the software category"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify capabilities for multiple skill categories are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the skills section shows distinct biomedical, IoT, and software emphasis"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC011",
+    "title": "Open and close the mobile navigation menu",
+    "description": "This test verifies that a mobile visitor can open the navigation menu, jump to a section, and close the menu afterward.",
+    "category": "Navigation and Scroll Spy",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Open the mobile navigation menu"
+      },
+      {
+        "type": "action",
+        "description": "Select the section link for Skills"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Skills section is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Close the mobile navigation menu"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the mobile navigation menu is not visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC012",
+    "title": "Review and dismiss the Maruthi rotation breakdown with Escape",
+    "description": "This test verifies that the Maruthi Medical Centre breakdown modal can be opened and dismissed using the Escape key.",
+    "category": "Clinical Rotations and Modal Breakdowns",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Open the detailed breakdown for Maruthi Medical Centre"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the clinical rotation modal is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Press Escape"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the clinical rotation modal is not visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC013",
+    "title": "Open an external social profile from the hero section",
+    "description": "This test verifies that a social link in the hero section opens the corresponding external destination.",
+    "category": "Hero Section and Credentials Modal",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Open the LinkedIn social link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the external profile destination is opened"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC014",
+    "title": "Dismiss a clinical rotation modal by clicking outside it",
+    "description": "This test verifies that clicking the backdrop closes an open clinical rotation modal.",
+    "category": "Clinical Rotations and Modal Breakdowns",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Open the detailed breakdown for Care24 Medical Centre"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the clinical rotation modal is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Click outside the modal content"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the clinical rotation modal is not visible"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC015",
+    "title": "Review skill proficiency indicators across categories",
+    "description": "This verifies that a visitor can inspect proficiency indicators and see consistent skill emphasis information while browsing the matrix.",
+    "category": "Skills Matrix and Capabilities",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the skills section"
+      },
+      {
+        "type": "action",
+        "description": "Hover over a proficiency indicator in the biomedical category"
+      },
+      {
+        "type": "action",
+        "description": "Hover over a proficiency indicator in the IoT category"
+      },
+      {
+        "type": "action",
+        "description": "Hover over a proficiency indicator in the software category"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify proficiency details are displayed for the hovered skill items"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the skill emphasis remains visible while comparing categories"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC016",
+    "title": "Open the email contact destination",
+    "description": "This verifies that a visitor can use the direct email contact link from the contact section.",
+    "category": "Contact Form Submission",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the contact section"
+      },
+      {
+        "type": "action",
+        "description": "Click the email contact link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the email destination opens"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the contact section remains accessible after opening the link"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC017",
+    "title": "Open the WhatsApp contact destination",
+    "description": "This verifies that a visitor can use the direct WhatsApp contact link from the contact section.",
+    "category": "Contact Form Submission",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the contact section"
+      },
+      {
+        "type": "action",
+        "description": "Click the WhatsApp contact link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the WhatsApp destination opens"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the contact section remains accessible after opening the link"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC018",
+    "title": "View contact location information",
+    "description": "This verifies that a visitor can open the location details from the contact section and see the location information.",
+    "category": "Contact Form Submission",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the contact section"
+      },
+      {
+        "type": "action",
+        "description": "Click the location details link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the location information is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the contact section still shows the available contact options"
+      }
+    ],
+    "priority": "Low"
+  }
+]

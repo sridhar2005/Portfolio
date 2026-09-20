@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { scrollToSection } from "../../lib/scrollToSection";
 
 const NAV_ITEMS = [
   { label: "Home", href: "#home" },
@@ -16,6 +17,7 @@ export default function Navbar() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState("home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +27,8 @@ export default function Navbar() {
       if (windowHeight > 0) {
         setScrollProgress((totalScroll / windowHeight) * 100);
       }
+
+      setIsScrolled(totalScroll > 30);
 
       // Scroll Spy
       const sections = NAV_ITEMS.map((item) => item.href.substring(1));
@@ -64,14 +68,25 @@ export default function Navbar() {
       />
 
       {/* Navigation Header */}
-      <header className="sticky top-0 z-50 backdrop-blur-md border-b border-white/[0.06] transition-colors duration-300 bg-black/90">
+      <header
+        className={`sticky top-0 z-50 liquid-glass-nav ${
+          isScrolled ? "is-scrolled" : ""
+        }`}
+      >
         <nav
           aria-label="Main Navigation"
           className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between"
         >
           {/* Brand Logo */}
-          <a className="flex items-center gap-1.5 focus:outline-none group" href="#home">
-            <span className="text-xl font-black tracking-widest text-white transition-transform duration-300 group-hover:tracking-wider">
+          <a
+            className="flex items-center gap-1.5 focus:outline-none group cursor-pointer"
+            href="#home"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection("home");
+            }}
+          >
+            <span className="text-xl font-black tracking-widest text-[var(--text-primary)] transition-transform duration-300 group-hover:tracking-wider">
               SRIDHAR<span className="text-[#ef233c] drop-shadow-[0_0_10px_rgba(239,35,60,0.8)]">.BME</span>
             </span>
           </a>
@@ -84,8 +99,12 @@ export default function Navbar() {
                 <a
                   key={item.href}
                   href={item.href}
-                  className={`py-1 relative transition-colors ${
-                    isActive ? "text-[#ef233c]" : "text-gray-300 hover:text-white"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(item.href.substring(1));
+                  }}
+                  className={`py-1 relative transition-colors cursor-pointer ${
+                    isActive ? "text-[#ef233c]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                   }`}
                 >
                   {item.label}
@@ -102,8 +121,12 @@ export default function Navbar() {
           {/* Header Action Button & Mobile Menu Toggle */}
           <div className="flex items-center gap-3">
             <a
-              className="btn-sweep px-5 py-2.5 rounded-lg text-xs uppercase tracking-wider font-bold text-white bg-[#ef233c] hover:bg-[#d90429] shadow-lg shadow-red-600/25 transition-all text-center inline-flex items-center gap-1.5"
+              className="btn-sweep px-5 py-2.5 rounded-lg text-xs uppercase tracking-wider font-bold text-white bg-[#ef233c] hover:bg-[#d90429] shadow-lg shadow-red-600/25 transition-all text-center inline-flex items-center gap-1.5 cursor-pointer"
               href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("contact");
+              }}
             >
               Get In Touch
             </a>
@@ -111,7 +134,7 @@ export default function Navbar() {
             {/* Mobile Hamburger Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-gray-400 hover:text-white rounded-lg focus:outline-none focus:ring-1 focus:ring-red-500"
+              className="md:hidden p-2.5 text-[var(--text-muted)] hover:text-[var(--text-primary)] rounded-lg focus:outline-none focus:ring-1 focus:ring-red-500 cursor-pointer"
               aria-label="Toggle navigation menu"
             >
               <span className="material-symbols-outlined text-2xl">
@@ -123,16 +146,20 @@ export default function Navbar() {
 
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-b border-white/10 bg-black/95 px-6 py-4 space-y-3 backdrop-blur-xl">
+          <div className="md:hidden border-b border-[var(--border-subtle)] bg-[var(--bg-surface)]/85 px-6 py-4 space-y-3 backdrop-blur-2xl">
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`block py-2 text-sm font-medium ${
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.href.substring(1));
+                  setMobileMenuOpen(false);
+                }}
+                className={`block py-2.5 text-sm font-medium cursor-pointer ${
                   activeSection === item.href.substring(1)
                     ? "text-[#ef233c] font-bold"
-                    : "text-gray-300 hover:text-white"
+                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                 }`}
               >
                 {item.label}

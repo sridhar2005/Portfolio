@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { scrollToSection } from "../../lib/scrollToSection";
 
 interface HeroProps {
   onOpenCredentials: () => void;
@@ -24,13 +25,13 @@ export default function Hero({ onOpenCredentials }: HeroProps) {
           <div className="lg:col-span-7 flex flex-col space-y-5">
             {/* Live Biomedical Telemetry Indicators */}
             <div className="flex flex-wrap items-center gap-2 anim-hero-up anim-delay-100">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-sm font-medium tracking-wide text-gray-300 transition-colors duration-300 hover:border-red-500/40">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full liquid-glass-btn text-sm font-medium tracking-wide text-[var(--text-secondary)] transition-colors duration-300 hover:border-red-500/40">
                 <span className="w-2 h-2 rounded-full bg-[#ef233c] animate-pulse" />
-                Hi, I am <strong className="text-white text-base">Sridhar</strong>
+                Hi, I am <strong className="text-[var(--text-primary)] text-base">Sridhar</strong>
               </span>
 
               {/* Live Vitals Badge with ECG Rhythm Pulse */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/40 border border-red-500/30 text-xs font-mono text-red-300 shadow-[0_0_12px_rgba(239,35,60,0.2)] hover:shadow-[0_0_16px_rgba(239,35,60,0.35)] transition-shadow duration-300">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/40 border border-red-500/30 text-xs font-mono text-red-300 shadow-[0_0_12px_rgba(239,35,60,0.2)] hover:shadow-[0_0_16px_rgba(239,35,60,0.35)] transition-shadow duration-300 backdrop-blur-md">
                 <svg
                   className="w-12 h-3.5"
                   fill="none"
@@ -52,12 +53,12 @@ export default function Hero({ onOpenCredentials }: HeroProps) {
               </div>
             </div>
 
-            <h1 className="text-5xl sm:text-6xl font-extrabold tracking-tight text-white leading-none anim-hero-up anim-delay-200">
+            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-[var(--text-primary)] leading-none anim-hero-up anim-delay-200">
               Biomedical <br />
               <span className="text-shimmer">Engineer</span>
             </h1>
 
-            <p className="text-base sm:text-lg text-gray-300 font-normal leading-relaxed max-w-xl anim-hero-up anim-delay-300">
+            <p className="text-base sm:text-lg text-[var(--text-secondary)] font-normal leading-relaxed max-w-xl anim-hero-up anim-delay-300">
               Passionate about IoT and driven to explore new technologies. I enjoy solving challenges,
               building practical solutions, and continuously improving my skills.
             </p>
@@ -66,7 +67,7 @@ export default function Hero({ onOpenCredentials }: HeroProps) {
             <div className="flex items-center space-x-3 pt-0.5 anim-hero-up anim-delay-350">
               <a
                 aria-label="Instagram"
-                className="social-btn w-9 h-9 rounded-full flex items-center justify-center border border-white/10 bg-white/5 text-gray-400"
+                className="social-btn w-9 h-9 rounded-full flex items-center justify-center border border-[var(--border-subtle)] bg-[var(--border-faint)] text-[var(--text-muted)] hover:text-[var(--text-primary)]"
                 href="https://www.instagram.com/srizz_sk._/"
                 rel="noreferrer"
                 target="_blank"
@@ -80,7 +81,7 @@ export default function Hero({ onOpenCredentials }: HeroProps) {
 
               <a
                 aria-label="LinkedIn"
-                className="social-btn w-9 h-9 rounded-full flex items-center justify-center border border-white/10 bg-white/5 text-gray-400"
+                className="social-btn w-9 h-9 rounded-full flex items-center justify-center border border-[var(--border-subtle)] bg-[var(--border-faint)] text-[var(--text-muted)] hover:text-[var(--text-primary)]"
                 href="https://www.linkedin.com/in/sridhar-sk-hellcatie1341/"
                 rel="noreferrer"
                 target="_blank"
@@ -92,7 +93,7 @@ export default function Hero({ onOpenCredentials }: HeroProps) {
 
               <a
                 aria-label="GitHub"
-                className="social-btn w-9 h-9 rounded-full flex items-center justify-center border border-white/10 bg-white/5 text-gray-400"
+                className="social-btn w-9 h-9 rounded-full flex items-center justify-center border border-[var(--border-subtle)] bg-[var(--border-faint)] text-[var(--text-muted)] hover:text-[var(--text-primary)]"
                 href="https://github.com/sridhar2005"
                 rel="noreferrer"
                 target="_blank"
@@ -104,7 +105,7 @@ export default function Hero({ onOpenCredentials }: HeroProps) {
 
               <a
                 aria-label="WhatsApp"
-                className="social-btn w-9 h-9 rounded-full flex items-center justify-center border border-white/10 bg-white/5 text-gray-400"
+                className="social-btn w-9 h-9 rounded-full flex items-center justify-center border border-[var(--border-subtle)] bg-[var(--border-faint)] text-[var(--text-muted)] hover:text-[var(--text-primary)]"
                 href="https://wa.me/919360071341"
                 rel="noreferrer"
                 target="_blank"
@@ -116,7 +117,7 @@ export default function Hero({ onOpenCredentials }: HeroProps) {
 
               <a
                 aria-label="Email"
-                className="social-btn w-9 h-9 rounded-full flex items-center justify-center border border-white/10 bg-white/5 text-gray-400"
+                className="social-btn w-9 h-9 rounded-full flex items-center justify-center border border-[var(--border-subtle)] bg-[var(--border-faint)] text-[var(--text-muted)] hover:text-[var(--text-primary)]"
                 href="mailto:kavisridharsk2005@gmail.com"
               >
                 <svg className="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
@@ -130,15 +131,19 @@ export default function Hero({ onOpenCredentials }: HeroProps) {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-1 anim-hero-up anim-delay-400">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-1 anim-hero-up anim-delay-400">
               <a
-                className="btn-sweep px-7 py-3 rounded-full text-xs uppercase tracking-wider font-bold text-white bg-[#ef233c] shadow-md shadow-red-600/30 transition-all inline-block hover:shadow-red-600/50"
+                className="btn-sweep w-full sm:w-auto px-7 py-3 rounded-full text-xs uppercase tracking-wider font-bold text-white bg-[#ef233c] shadow-md shadow-red-600/30 transition-all text-center inline-block hover:shadow-red-600/50 cursor-pointer"
                 href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection("contact");
+                }}
               >
                 Hire Me
               </a>
               <button
-                className="px-7 py-3 rounded-full text-xs uppercase tracking-wider font-semibold text-gray-300 bg-zinc-900/80 border border-zinc-700 hover:border-red-500/50 hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-red-500/10 inline-block hover:-translate-y-0.5 cursor-pointer"
+                className="liquid-glass-btn w-full sm:w-auto px-7 py-3 rounded-full text-xs uppercase tracking-wider font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-center inline-block cursor-pointer"
                 onClick={onOpenCredentials}
               >
                 View Credentials
@@ -146,24 +151,24 @@ export default function Hero({ onOpenCredentials }: HeroProps) {
             </div>
 
             {/* Hero Metrics */}
-            <div className="grid grid-cols-3 border-t border-white/10 max-w-lg pt-4 gap-4 anim-hero-up anim-delay-500">
+            <div className="grid grid-cols-3 border-t border-[var(--border-subtle)] max-w-lg pt-4 gap-2.5 sm:gap-4 anim-hero-up anim-delay-500">
               <div className="group cursor-default">
-                <span className="block text-2xl sm:text-3xl font-black text-white group-hover:text-[#ef233c] transition-colors">
+                <span className="block text-xl sm:text-2xl sm:text-3xl font-black text-[var(--text-primary)] group-hover:text-[#ef233c] transition-colors">
                   7.5
                 </span>
-                <span className="text-xs text-gray-400 font-medium">CGPA (B.E.)</span>
+                <span className="text-xs text-[var(--text-muted)] font-medium">CGPA (B.E.)</span>
               </div>
               <div className="group cursor-default">
-                <span className="block text-2xl sm:text-3xl font-black text-white group-hover:text-[#ef233c] transition-colors">
+                <span className="block text-xl sm:text-2xl sm:text-3xl font-black text-[var(--text-primary)] group-hover:text-[#ef233c] transition-colors">
                   30+
                 </span>
-                <span className="text-xs text-gray-400 font-medium">Days Clinical Immersion</span>
+                <span className="text-xs text-[var(--text-muted)] font-medium">Days Clinical Immersion</span>
               </div>
               <div className="group cursor-default">
-                <span className="block text-2xl sm:text-3xl font-black text-white group-hover:text-[#ef233c] transition-colors">
+                <span className="block text-xl sm:text-2xl sm:text-3xl font-black text-[var(--text-primary)] group-hover:text-[#ef233c] transition-colors">
                   6+
                 </span>
-                <span className="text-xs text-gray-400 font-medium">Certifications</span>
+                <span className="text-xs text-[var(--text-muted)] font-medium">Certifications</span>
               </div>
             </div>
           </div>
@@ -176,7 +181,7 @@ export default function Hero({ onOpenCredentials }: HeroProps) {
               <div className="relative w-full h-full rounded-full bg-gradient-to-b from-zinc-800 via-zinc-950 to-black border-2 border-red-500/40 shadow-2xl overflow-hidden flex items-end justify-center transition-all duration-500 hover:scale-[1.03] group">
                 <Image
                   src="/images/profile.png"
-                  alt="Sridhar K - Biomedical Engineer"
+                  alt="Sridhar SK - Biomedical Engineer"
                   fill
                   sizes="(max-width: 768px) 288px, 384px"
                   priority
@@ -190,21 +195,29 @@ export default function Hero({ onOpenCredentials }: HeroProps) {
 
         {/* Tagline Below Hero */}
         <div className="mt-20 text-center max-w-3xl mx-auto anim-hero-up anim-delay-600">
-          <p className="text-lg sm:text-xl font-normal text-gray-300 tracking-wide leading-relaxed">
+          <p className="text-lg sm:text-xl font-normal text-[var(--text-secondary)] tracking-wide leading-relaxed">
             Bridging the gap between IoT and medical to build the generation of healthcare solutions
           </p>
 
           {/* Center CTA */}
           <div className="flex items-center justify-center gap-4 mt-8">
             <a
-              className="btn-sweep px-7 py-3 rounded-md text-xs uppercase tracking-wider font-bold text-white bg-[#ef233c] hover:bg-[#d90429] transition shadow-lg shadow-red-600/30"
+              className="btn-sweep px-7 py-3 rounded-md text-xs uppercase tracking-wider font-bold text-white bg-[#ef233c] hover:bg-[#d90429] transition shadow-lg shadow-red-600/30 cursor-pointer"
               href="#clinical"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("clinical");
+              }}
             >
               Explore
             </a>
             <a
-              className="px-7 py-3 rounded-md text-xs uppercase tracking-wider font-semibold text-gray-300 border border-zinc-700 hover:border-white hover:text-white transition bg-black/40 hover:-translate-y-0.5"
+              className="liquid-glass-btn px-7 py-3 rounded-md text-xs uppercase tracking-wider font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-center inline-block cursor-pointer"
               href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("contact");
+              }}
             >
               Get In Touch
             </a>
