@@ -20,6 +20,14 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-[var(--bg-primary)] text-[var(--text-secondary)]">
+      {/* Mobile-only opening/entry animation — invisible on desktop */}
+      <div className="mobile-entry-loader" aria-hidden="true">
+        <div className="mobile-entry-loader-mark">
+          <span className="mobile-entry-loader-ring" />
+          <span className="mobile-entry-loader-text">Sridhar.BME</span>
+        </div>
+      </div>
+
       {/* Dynamic Cursor Light Follower */}
       <CursorGlow />
 

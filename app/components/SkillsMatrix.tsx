@@ -189,7 +189,8 @@ export default function SkillsMatrix() {
                       </div>
                       <div>
                         <span className="text-[10px] text-[var(--text-muted)] mt-2 block text-right font-medium">
-                          Hover to flip ↻
+                          <span className="hover-only-label">Hover to flip ↻</span>
+                          <span className="touch-only-label">Tap to flip ↻</span>
                         </span>
                       </div>
                     </div>

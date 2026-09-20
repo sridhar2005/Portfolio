@@ -19,6 +19,32 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  // Lock body scroll and allow Escape-to-close while the mobile panel is open
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileMenuOpen(false);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [mobileMenuOpen]);
+
+  // Close the mobile panel automatically if the viewport grows into desktop width
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const handleChange = () => setMobileMenuOpen(false);
+    mq.addEventListener("change", handleChange);
+    return () => mq.removeEventListener("change", handleChange);
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       const totalScroll = document.documentElement.scrollTop;
@@ -131,43 +157,78 @@ export default function Navbar() {
               Get In Touch
             </a>
 
-            {/* Mobile Hamburger Toggle */}
+            {/* Mobile Hamburger Toggle (animated burger-to-close morph) */}
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2.5 text-[var(--text-muted)] hover:text-[var(--text-primary)] rounded-lg focus:outline-none focus:ring-1 focus:ring-red-500 cursor-pointer"
+              onClick={() => setMobileMenuOpen((v) => !v)}
+              className="md:hidden relative w-11 h-11 -mr-1 flex items-center justify-center text-[var(--text-secondary)] active:scale-90 rounded-full transition-transform duration-200 focus:outline-none focus:ring-1 focus:ring-red-500 cursor-pointer"
               aria-label="Toggle navigation menu"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-nav-panel"
             >
-              <span className="material-symbols-outlined text-2xl">
-                {mobileMenuOpen ? "close" : "menu"}
+              <span className="relative w-5 h-4 flex flex-col justify-between">
+                <span
+                  className={`block h-[1.5px] w-full bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] origin-center ${
+                    mobileMenuOpen ? "translate-y-[7px] rotate-45" : ""
+                  }`}
+                />
+                <span
+                  className={`block h-[1.5px] w-full bg-current rounded-full transition-all duration-200 ${
+                    mobileMenuOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100"
+                  }`}
+                />
+                <span
+                  className={`block h-[1.5px] w-full bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] origin-center ${
+                    mobileMenuOpen ? "-translate-y-[7px] -rotate-45" : ""
+                  }`}
+                />
               </span>
             </button>
           </div>
         </nav>
 
-        {/* Mobile Dropdown Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden border-b border-[var(--border-subtle)] bg-[var(--bg-surface)]/85 px-6 py-4 space-y-3 backdrop-blur-2xl">
-            {NAV_ITEMS.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(item.href.substring(1));
-                  setMobileMenuOpen(false);
-                }}
-                className={`block py-2.5 text-sm font-medium cursor-pointer ${
-                  activeSection === item.href.substring(1)
-                    ? "text-[#ef233c] font-bold"
-                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-                }`}
-              >
-                {item.label}
-              </a>
-            ))}
+        {/* Mobile Slide-Down Panel — always mounted so open AND close both animate smoothly */}
+        <div
+          id="mobile-nav-panel"
+          className={`md:hidden grid transition-[grid-template-rows] duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            mobileMenuOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+          }`}
+        >
+          <div className="overflow-hidden border-b border-[var(--border-subtle)] bg-[var(--bg-surface)]/95 backdrop-blur-2xl">
+            <nav aria-label="Mobile Navigation" className="px-6 py-3 flex flex-col">
+              {NAV_ITEMS.map((item, idx) => {
+                const isActive = activeSection === item.href.substring(1);
+                return (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(item.href.substring(1));
+                      setMobileMenuOpen(false);
+                    }}
+                    style={{ transitionDelay: mobileMenuOpen ? `${idx * 45}ms` : "0ms" }}
+                    className={`flex items-center justify-between min-h-[48px] py-3 text-base font-medium border-b border-[var(--border-faint)] last:border-b-0 transition-all duration-300 active:opacity-60 cursor-pointer ${
+                      mobileMenuOpen ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-3"
+                    } ${isActive ? "text-[#ef233c] font-bold" : "text-[var(--text-secondary)]"}`}
+                  >
+                    {item.label}
+                    {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#ef233c] shadow-[0_0_8px_rgba(239,35,60,0.8)]" />}
+                  </a>
+                );
+              })}
+            </nav>
           </div>
-        )}
+        </div>
       </header>
+
+      {/* Dimming backdrop behind the mobile panel — tap anywhere to dismiss */}
+      <div
+        onClick={() => setMobileMenuOpen(false)}
+        aria-hidden="true"
+        className={`md:hidden fixed inset-0 z-40 bg-black/55 backdrop-blur-[2px] transition-opacity duration-300 ${
+          mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+      />
     </>
   );
 }

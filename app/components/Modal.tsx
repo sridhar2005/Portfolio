@@ -45,7 +45,7 @@ export default function Modal({ type, onClose }: ModalProps) {
         <button
           aria-label="Close Modal"
           onClick={onClose}
-          className="absolute top-5 right-5 text-[var(--text-muted)] hover:text-[var(--text-primary)] p-1.5 rounded-full hover:bg-[var(--border-faint)] transition-colors focus:outline-none cursor-pointer"
+          className="absolute top-4 right-4 sm:top-5 sm:right-5 text-[var(--text-muted)] hover:text-[var(--text-primary)] w-10 h-10 sm:w-auto sm:h-auto flex items-center justify-center p-1.5 rounded-full hover:bg-[var(--border-faint)] active:scale-90 transition-all focus:outline-none cursor-pointer"
         >
           <span className="material-symbols-outlined text-xl">close</span>
         </button>
