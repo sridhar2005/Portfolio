@@ -145,9 +145,9 @@ export default function Navbar() {
           </div>
 
           {/* Header Action Button & Mobile Menu Toggle */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-2.5 md:gap-3">
             <a
-              className="btn-sweep px-5 py-2.5 rounded-lg text-xs uppercase tracking-wider font-bold text-white bg-[#ef233c] hover:bg-[#d90429] shadow-lg shadow-red-600/25 transition-all text-center inline-flex items-center gap-1.5 cursor-pointer"
+              className="btn-sweep mobile-header-cta px-3 py-1.5 sm:px-3.5 sm:py-2 md:px-5 md:py-2.5 rounded-full md:rounded-lg text-[10.5px] sm:text-[11.5px] md:text-xs uppercase tracking-tight sm:tracking-normal md:tracking-wider font-semibold md:font-bold text-white bg-[#ef233c] hover:bg-[#d90429] shadow-md shadow-red-600/20 md:shadow-lg md:shadow-red-600/25 transition-all text-center inline-flex items-center gap-1 cursor-pointer whitespace-nowrap active:scale-95"
               href="#contact"
               onClick={(e) => {
                 e.preventDefault();
@@ -160,15 +160,15 @@ export default function Navbar() {
             {/* Mobile Hamburger Toggle (animated burger-to-close morph) */}
             <button
               onClick={() => setMobileMenuOpen((v) => !v)}
-              className="md:hidden relative w-11 h-11 -mr-1 flex items-center justify-center text-[var(--text-secondary)] active:scale-90 rounded-full transition-transform duration-200 focus:outline-none focus:ring-1 focus:ring-red-500 cursor-pointer"
+              className="md:hidden relative w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center text-[var(--text-secondary)] active:scale-90 rounded-full transition-transform duration-200 focus:outline-none focus:ring-1 focus:ring-red-500 cursor-pointer"
               aria-label="Toggle navigation menu"
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-nav-panel"
             >
-              <span className="relative w-5 h-4 flex flex-col justify-between">
+              <span className="relative w-4.5 h-3.5 flex flex-col justify-between">
                 <span
                   className={`block h-[1.5px] w-full bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] origin-center ${
-                    mobileMenuOpen ? "translate-y-[7px] rotate-45" : ""
+                    mobileMenuOpen ? "translate-y-[6px] rotate-45" : ""
                   }`}
                 />
                 <span
@@ -178,7 +178,7 @@ export default function Navbar() {
                 />
                 <span
                   className={`block h-[1.5px] w-full bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] origin-center ${
-                    mobileMenuOpen ? "-translate-y-[7px] -rotate-45" : ""
+                    mobileMenuOpen ? "-translate-y-[6px] -rotate-45" : ""
                   }`}
                 />
               </span>
@@ -194,7 +194,7 @@ export default function Navbar() {
           }`}
         >
           <div className="overflow-hidden border-b border-[var(--border-subtle)] bg-[var(--bg-surface)]/95 backdrop-blur-2xl">
-            <nav aria-label="Mobile Navigation" className="px-6 py-3 flex flex-col">
+            <nav aria-label="Mobile Navigation" className="px-5 sm:px-6 py-2.5 flex flex-col divide-y divide-[var(--border-faint)]">
               {NAV_ITEMS.map((item, idx) => {
                 const isActive = activeSection === item.href.substring(1);
                 return (
@@ -206,17 +206,35 @@ export default function Navbar() {
                       scrollToSection(item.href.substring(1));
                       setMobileMenuOpen(false);
                     }}
-                    style={{ transitionDelay: mobileMenuOpen ? `${idx * 45}ms` : "0ms" }}
-                    className={`flex items-center justify-between min-h-[48px] py-3 text-base font-medium border-b border-[var(--border-faint)] last:border-b-0 transition-all duration-300 active:opacity-60 cursor-pointer ${
+                    style={{ transitionDelay: mobileMenuOpen ? `${idx * 35}ms` : "0ms" }}
+                    className={`flex items-center justify-between min-h-[46px] py-2.5 text-sm font-medium transition-all duration-300 active:bg-white/[0.04] active:px-2 rounded-lg cursor-pointer ${
                       mobileMenuOpen ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-3"
-                    } ${isActive ? "text-[#ef233c] font-bold" : "text-[var(--text-secondary)]"}`}
+                    } ${isActive ? "text-[#ef233c] font-bold" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}
                   >
-                    {item.label}
-                    {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#ef233c] shadow-[0_0_8px_rgba(239,35,60,0.8)]" />}
+                    <span className="flex items-center gap-2.5">
+                      <span
+                        className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                          isActive ? "bg-[#ef233c] shadow-[0_0_8px_rgba(239,35,60,0.8)] scale-125" : "bg-transparent"
+                        }`}
+                      />
+                      {item.label}
+                    </span>
+                    <span className="text-xs text-[var(--text-muted)] opacity-50">›</span>
                   </a>
                 );
               })}
             </nav>
+
+            {/* Mobile Drawer Quick Status Footer */}
+            <div className="px-5 sm:px-6 py-3 bg-[var(--border-faint)]/40 border-t border-[var(--border-subtle)] flex items-center justify-between text-xs text-[var(--text-muted)]">
+              <span className="flex items-center gap-2 font-medium text-[11px]">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                Available for opportunities
+              </span>
+              <span className="font-mono text-[10px] tracking-wider text-[#ef233c] font-semibold">
+                SRIDHAR.BME
+              </span>
+            </div>
           </div>
         </div>
       </header>
@@ -225,10 +243,23 @@ export default function Navbar() {
       <div
         onClick={() => setMobileMenuOpen(false)}
         aria-hidden="true"
-        className={`md:hidden fixed inset-0 z-40 bg-black/55 backdrop-blur-[2px] transition-opacity duration-300 ${
+        className={`md:hidden fixed inset-0 z-40 bg-black/60 backdrop-blur-[3px] transition-opacity duration-300 ${
           mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       />
+
+      {/* Mobile Floating Back-to-Top Button */}
+      <button
+        onClick={() => scrollToSection("home")}
+        aria-label="Back to top"
+        className={`md:hidden fixed bottom-6 right-5 z-40 w-10 h-10 rounded-full bg-[var(--bg-surface)]/90 backdrop-blur-xl border border-[var(--border-subtle)] text-[var(--text-primary)] shadow-lg shadow-black/50 flex items-center justify-center transition-all duration-300 active:scale-90 ${
+          isScrolled
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 translate-y-4 pointer-events-none"
+        }`}
+      >
+        <span className="material-symbols-outlined text-lg text-[#ef233c]">arrow_upward</span>
+      </button>
     </>
   );
 }

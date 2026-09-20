@@ -200,9 +200,9 @@ export default function Hero({ onOpenCredentials }: HeroProps) {
           </p>
 
           {/* Center CTA */}
-          <div className="flex items-center justify-center gap-4 mt-8">
+          <div className="flex items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-8">
             <a
-              className="btn-sweep px-7 py-3 rounded-md text-xs uppercase tracking-wider font-bold text-white bg-[#ef233c] hover:bg-[#d90429] transition shadow-lg shadow-red-600/30 cursor-pointer"
+              className="btn-sweep px-5 py-2.5 sm:px-6 sm:py-3 md:px-7 md:py-3 rounded-md text-[11px] sm:text-xs md:text-xs uppercase tracking-normal sm:tracking-wider md:tracking-wider font-bold text-white bg-[#ef233c] hover:bg-[#d90429] transition shadow-lg shadow-red-600/30 cursor-pointer active:scale-95"
               href="#clinical"
               onClick={(e) => {
                 e.preventDefault();
@@ -212,7 +212,7 @@ export default function Hero({ onOpenCredentials }: HeroProps) {
               Explore
             </a>
             <a
-              className="liquid-glass-btn px-7 py-3 rounded-md text-xs uppercase tracking-wider font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-center inline-block cursor-pointer"
+              className="liquid-glass-btn mobile-hero-cta px-4 py-2 sm:px-5 sm:py-2.5 md:px-7 md:py-3 rounded-md text-[11px] sm:text-xs md:text-xs uppercase tracking-normal sm:tracking-wider md:tracking-wider font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-center inline-block cursor-pointer active:scale-95"
               href="#contact"
               onClick={(e) => {
                 e.preventDefault();
